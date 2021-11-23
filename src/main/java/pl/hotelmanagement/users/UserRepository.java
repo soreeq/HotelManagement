@@ -1,4 +1,4 @@
-package pl.hotelmanagment;
+package pl.hotelmanagement.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

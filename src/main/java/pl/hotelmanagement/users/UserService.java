@@ -1,4 +1,4 @@
-package pl.hotelmanagment;
+package pl.hotelmanagement.users;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

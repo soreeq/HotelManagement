@@ -6,14 +6,23 @@
 </head>
 <body>
 <h1>To poczatek wszystkiego! </h1>
-<p th:text="${name}"></p>
-<p th:text="${rezerwacja.getUser_id()}"></p>
-<p th:text="${rezerwacja.getStartdate()}"></p>
-<p th:text="${rezerwacja.getEnddate()}"></p>
+
 
 <tr th:each="user: ${users}">
-    <td th:text="${user.getUsername()}"/>
-    <td th:text="${user.getUsername()}"/>
+    <p th:text="${rezerwacja.getGuest_id()}"></p>
+    <p th:text="${rezerwacja.getStartdate()}"></p>
+    <p th:text="${rezerwacja.getEnddate()}"></p>
 </tr>
+
+<form>
+    <p>Imię:<input type="text"></p>
+    <p>Drugie imię:<input type="text"></p>
+    <p>Nazwisko:<input type="text"></p>
+    <p>Adres:<input type="text"></p>
+    <p>Numer telefonu:<input type="text"></p>
+    <p>Płeć:<input type="checkbox"><input type="checkbox"></p>
+    <p>E-mail:<input type="email"></p>
+    <p><input type="submit" value="Dodaj nowego goscia"></p>
+</form>
 </body>
 </html>

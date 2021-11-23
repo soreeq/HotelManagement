@@ -1,7 +1,6 @@
-package pl.hotelmanagment;
+package pl.hotelmanagement.rooms;
 
 import lombok.*;
-import pl.hotelmanagment.User;
 
 import javax.persistence.*;
 

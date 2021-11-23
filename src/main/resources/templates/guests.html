@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Management</title>
+</head>
+<body>
+<h1>Dodawanie nowego gościa </h1>
+
+<form th:action="@{/add-guest}" th:object="${newGuest}" method="post">
+    <p>Imię:<input type="text" th:field="*{firstname}"></p>
+    <p>Drugie imię:<input type="text" th:field="*{middlename}"></p>
+    <p>Nazwisko:<input type="text" th:field="*{lastname}"></p>
+    <p>Adres:<input type="text" th:field="*{address}"></p>
+    <p>Numer telefonu:<input type="text" th:field="*{phonenumber}"></p>
+    <p>Płeć:<input type="checkbox"><input type="checkbox"></p>
+    <p>E-mail:<input type="email" th:field="*{email}"></p>
+    <p><input type="submit" value="Dodaj nowego goscia"></p>
+</form>
+
+<tr th:each="guest: ${guests}">
+    <p th:text="${guest.getGuest_id()}"></p>
+    <p th:text="${guest.getFirstname()}"></p>
+    <p th:text="${guest.getLastname()}"></p>
+    <p th:text="${guest.getMiddlename()}"></p>
+    <p th:text="${guest.getAddress()}"></p>
+    <p th:text="${guest.getPhonenumber()}"></p>
+    <p th:text="${guest.getGender()}"></p>
+    <p th:text="${guest.getEmail()}"></p>
+</tr>
+
+</body>
+</html>

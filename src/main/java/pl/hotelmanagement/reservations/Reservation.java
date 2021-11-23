@@ -1,4 +1,4 @@
-package pl.hotelmanagment;
+package pl.hotelmanagement.reservations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -19,7 +19,7 @@ public class Reservation {
     private int id;
 
     @NonNull
-    private int user_id;
+    private int guest_id;
 
     @NonNull
     @JsonProperty("room_id")
@@ -35,8 +35,8 @@ public class Reservation {
     @JsonProperty("enddate")
     private String enddate;
 
-    public Reservation(@NonNull int user_id, @NonNull int room_id, @NonNull String startdate, @NonNull String enddate) {
-        this.user_id = user_id;
+    public Reservation(@NonNull int guest_id, @NonNull int room_id, @NonNull String startdate, @NonNull String enddate) {
+        this.guest_id = guest_id;
         this.room_id = room_id;
         this.startdate = startdate;
         this.enddate = enddate;

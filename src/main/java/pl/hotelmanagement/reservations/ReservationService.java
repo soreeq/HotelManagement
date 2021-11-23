@@ -1,4 +1,4 @@
-package pl.hotelmanagment;
+package pl.hotelmanagement.reservations;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.hotelmanagement.rooms.Room;
+import pl.hotelmanagement.rooms.RoomRepository;
+import pl.hotelmanagement.users.User;
+import pl.hotelmanagement.users.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,11 +33,7 @@ public class ReservationService {
 
     @GetMapping("/reservations")
     public String getReservations(Model model) {
-        Reservation reservation = new Reservation(1,2, "1998-05-26", "2090-11-11");
-        List<User> users = userRepository.findAll();
-        model.addAttribute("rezerwacja", reservation);
-        model.addAttribute("name", "Przemek");
-        model.addAttribute("users", users);
+
         return "test";
     }
 
@@ -46,7 +46,7 @@ public class ReservationService {
             return ResponseEntity.ok(HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
-        Reservation newReservation = new Reservation(userFromDb.get().getId(),roomFromDb.get().getId(), reservation.getStartdate(), reservation.getEnddate());
+        Reservation newReservation = new Reservation(reservation.getGuest_id(), roomFromDb.get().getId(), reservation.getStartdate(), reservation.getEnddate());
 
         Reservation savedReservation = reservationRepository.save(newReservation);
         return ResponseEntity.ok(savedReservation);
