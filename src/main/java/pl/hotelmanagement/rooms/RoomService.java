@@ -27,10 +27,10 @@ public class RoomService {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/rooms")
-    public ResponseEntity showRooms() throws JsonProcessingException {
+    public String showRooms() throws JsonProcessingException {
         List<Room> rooms = roomRepository.findAll();
         String savedRooms = objectMapper.writeValueAsString(rooms);
-        return ResponseEntity.ok(savedRooms);
+        return "test";
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/rooms")

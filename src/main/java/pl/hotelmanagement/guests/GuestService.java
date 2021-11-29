@@ -40,7 +40,7 @@ public class GuestService {
         model.addAttribute("guests", guestList);
         model.addAttribute("newGuest", new Guest());
 
-        return "guests";
+        return "tableguests";
     }
 
     @PostMapping("/add-guest")
