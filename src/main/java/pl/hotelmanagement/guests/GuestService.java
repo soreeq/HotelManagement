@@ -13,6 +13,7 @@ import pl.hotelmanagement.rooms.RoomRepository;
 import pl.hotelmanagement.users.User;
 import pl.hotelmanagement.users.UserRepository;
 
+import java.rmi.MarshalledObject;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,11 +39,16 @@ public class GuestService {
         List<Guest> guestList = guestRepository.findAll();
         System.out.println(guestList);
         model.addAttribute("guests", guestList);
-        model.addAttribute("newGuest", new Guest());
+
 
         return "tableguests";
     }
 
+    @GetMapping("/add-guest")
+    public String showAddGuestForm(Model model){
+        model.addAttribute("newGuest", new Guest());
+        return "guests";
+    }
     @PostMapping("/add-guest")
     public String addGuest(/*@RequestHeader("username") String username,*/ @ModelAttribute Guest guest){
 
