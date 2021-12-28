@@ -47,7 +47,7 @@ public class GuestService {
     @GetMapping("/add-guest")
     public String showAddGuestForm(Model model){
         model.addAttribute("newGuest", new Guest());
-        return "guests";
+        return "addguest";
     }
     @PostMapping("/add-guest")
     public String addGuest(/*@RequestHeader("username") String username,*/ @ModelAttribute Guest guest){
