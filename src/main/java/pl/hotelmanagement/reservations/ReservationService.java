@@ -34,7 +34,7 @@ public class ReservationService {
     @GetMapping("/reservations")
     public String getReservations(Model model) {
 
-        return "test";
+        return "reservation";
     }
 
     @PostMapping("/reservations")
