@@ -29,25 +29,25 @@ public class UserService {
     }
     @PostMapping("/users")
     public ResponseEntity addUser(@RequestBody User user){
-        Optional<User> userFromDb = userRepository.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
-        if(userFromDb.isPresent()){
+/*        if(userFromDb.isPresent()){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
-        }
+        }*/
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
 
-    @PostMapping("/login")
+/*    @PostMapping("/login")
     public ResponseEntity login(@RequestBody User user) {
-        Optional<User> userFromDb = userRepository.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
-        if (userFromDb.isEmpty() || wrongPassword(userFromDb, user)) {
+*//*        if (userFromDb.isEmpty() || wrongPassword(userFromDb, user)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+        }*//*
 
         return ResponseEntity.ok().build();
-    }
+    }*/
 
     private boolean wrongPassword(Optional<User> userFromDb, User user) {
         return !userFromDb.get().getPassword().equals(user.getPassword());

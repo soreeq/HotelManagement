@@ -12,8 +12,6 @@ import pl.hotelmanagement.reservations.ReservationRepository;
 import pl.hotelmanagement.rooms.RoomRepository;
 import pl.hotelmanagement.users.User;
 import pl.hotelmanagement.users.UserRepository;
-
-import java.rmi.MarshalledObject;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +39,7 @@ public class GuestService {
         model.addAttribute("guests", guestList);
 
 
-        return "tableguests";
+        return "guests";
     }
 
     @GetMapping("/add-guest")
@@ -60,7 +58,7 @@ public class GuestService {
 
         List<Guest> guestList = guestRepository.findAll();
 
-        Guest guestSaved = new Guest(guest.getGuest_id(), guest.getFirstname(), guest.getLastname(), guest.getMiddlename(), guest.getAddress(), guest.getPhonenumber(), guest.getGender(), guest.getEmail());
+        Guest guestSaved = new Guest(guest.getGuest_id(), guest.getFirstname(), guest.getLastname(), guest.getMiddlename(), guest.getAddress(), guest.getPhonenumber(), guest.getEmail(), guest.getNotes());
         Guest save = guestRepository.save(guestSaved);
 
         return "redirect:/guests";

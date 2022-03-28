@@ -23,6 +23,6 @@ public class Guest {
     private String middlename;
     private String address;
     private int phonenumber;
-    private String gender;
+    private String notes;
     private String email;
 }
