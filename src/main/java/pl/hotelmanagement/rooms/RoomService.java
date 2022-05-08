@@ -31,7 +31,6 @@ public class RoomService {
     @GetMapping("/rooms")
     public String showRooms(Model model) throws JsonProcessingException {
         List<Room> roomList = roomRepository.findAll();
-        System.out.println(roomList);
         /*String savedRooms = objectMapper.writeValueAsString(rooms);*/
         model.addAttribute("rooms", roomList);
         return "rooms";
@@ -52,9 +51,34 @@ public class RoomService {
        }*/
         List<Room> roomList = roomRepository.findAll();
 
-      Room roomSaved = new Room(room.getRoom_id(), room.getType(), room.getSize(), room.isOccupied(), room.getRate());
+
+      Room roomSaved = new Room(room.getRoom_id(), room.getType(), room.getSize(), room.getRate());
+      roomSaved.setOccupied("Wolny");
       Room save = roomRepository.save(roomSaved);
 
       return "redirect:/rooms";
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping("/delete-room/{roomid}")
+    public String deleteRoom(@PathVariable int roomid){
+        roomRepository.deleteByRoomid(roomid);
+        return "redirect:/rooms";
+    }
+
+    @RequestMapping("/free-rooms")
+    public String showFreeRooms(Model model){
+        List<Room> listOfFreeRooms = roomRepository.freeRooms("Wolny");
+        model.addAttribute("freeRooms", listOfFreeRooms);
+        System.out.println(listOfFreeRooms);
+        return "freerooms";
+    }
+
+    @RequestMapping("/occupied-rooms")
+    public String showOccupiedRooms(Model model){
+        List<Room> listOfOccupiedRooms = roomRepository.occupiedRooms("Zajete");
+        model.addAttribute("occupiedRooms", listOfOccupiedRooms);
+        System.out.println(listOfOccupiedRooms);
+        return "occupiedrooms";
     }
 }

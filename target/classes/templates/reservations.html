@@ -40,7 +40,7 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a href="/reservations" class="nav-link mx-4">Klienci</a>
+                        <a href="/guests" class="nav-link mx-4">Klienci</a>
                     </li>
 
                     <li class="nav-item active">
@@ -57,14 +57,14 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4 h5 d-flex justify-content-center jumbotron rounded-2" style="background-color: rgba(255, 255, 255, 0.8);
-            color: #212529; font-size:x-large;"> Tablica obecnych rezerwacji</div>
+            color: #212529; font-size:x-large;"> Tablica rezerwacji w hotelu</div>
         </div>
         <div class="row">
             <div class="col-5"></div><a href="/add-reservation" class="col-2" ><button type="submit" class="btn  mx-auto btn-warning align-center " style="margin-left: auto;margin-right: auto;">Dodaj nową rezerwacje</button></a><div class="col-5"></div>
         </div>
         <div class="col-12 my-3">
         </div>
-        <table class="table border-1" style="background-color: rgba(255, 255, 255, 0.8)">
+        <table class="table border-1 scrollable" style="background-color: rgba(255, 255, 255, 0.8)">
             <thead>
             <tr>
                 <th scope="col">Numer rezerwacji</th>
@@ -72,6 +72,7 @@
                 <th scope="col">Numer pokoju</th>
                 <th scope="col">Data rozpoczęcia rezerwacji</th>
                 <th scope="col">Data zakończenia rezerwacji</th>
+                <th scope="col"> </th>
             </tr>
             </thead>
 
@@ -79,10 +80,12 @@
                 <td th:text="${reservation.getReservation_id()}"></td>
                 <td th:text="${reservation.getGuest_id()}"></td>
                 <td th:text="${reservation.getRoom_id()}"></td>
-                <td th:text="${reservation.getStartdate()}"></td>
-                <td th:text="${reservation.getEnddate()}"></td>
-
-
+                <td th:text="${#dates.format(reservation.getStartdate(), 'dd-MM-yyyy')}"></td>
+                <td th:text="${#dates.format(reservation.getEnddate(), 'dd-MM-yyyy')}"></td>
+                <td><a th:href="@{'/delete-reservation/' + ${reservation.getReservation_id()}}"><button type="submit" th:name="action" th:value="${reservation.getReservation_id()}" class="btn btn-danger">Anuluj</button></a></td>
+                    <!--
+                    <td><button type="submit" th:name="action" th:value="${reservation.getReservation_id()}" class="btn btn-danger" >Anuluj</button></td>-->
+                <!--<a th:href="@{/>(reservation_id=${reservation.getReservation_id()})}">-->
             </tr>
         </table>
     </div>

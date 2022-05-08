@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -57,36 +57,36 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4 h5 d-flex justify-content-center jumbotron rounded-2" style="background-color: rgba(255, 255, 255, 0.8);
-            color: #212529; font-size:x-large;"> Tablica rezerwacji w hotelu</div>
+            color: #212529; font-size:x-large;"> Lista obecnych pokojów w hotelu
+            </div>
         </div>
         <div class="row">
-            <div class="col-5"></div><a href="/add-reservation" class="col-2" ><button type="submit" class="btn  mx-auto btn-warning align-center " style="margin-left: auto;margin-right: auto;">Dodaj nową rezerwacje</button></a><div class="col-5"></div>
+            <div class="col-3"></div>
+            <a href="/add-room" class="col-2" ><button type="submit" class="btn mx-auto btn-warning align-center " style="margin-left: auto;margin-right: auto;">Dodaj nowy pokój</button></a>
+            <a href="/occupied-rooms" class="col-2" ><button type="submit" class="btn mx-auto btn-danger align-center " style="margin-left: auto;margin-right: auto;">Wyświetl zajete pokoje</button></a>
+            <a href="/free-rooms" class="col-2" ><button type="submit" class="btn mx-auto btn-success align-center " style="margin-left: auto;margin-right: auto;">Wyświetl wolne pokoje</button></a>
+            <div class="col-3"></div>
         </div>
         <div class="col-12 my-3">
         </div>
         <table class="table border-1 scrollable" style="background-color: rgba(255, 255, 255, 0.8)">
             <thead>
             <tr>
-                <th scope="col">Numer rezerwacji</th>
-                <th scope="col">Numer klienta</th>
                 <th scope="col">Numer pokoju</th>
-                <th scope="col">Data rozpoczęcia rezerwacji</th>
-                <th scope="col">Data zakończenia rezerwacji</th>
-                <th scope="col"> </th>
+                <th scope="col">Typ pokoju</th>
+                <th scope="col">Wielkość pokoju</th>
+                <th scope="col">Stawka za pokój</th>
+                <th scope="col">Czy posiada aktualnie rezerwacje?</th>
             </tr>
             </thead>
 
-            <tr th:each="reservation: ${reservations}">
-
-                <td th:text="${reservation.getReservation_id()}"></td>
-                <td th:text="${reservation.getGuest_id()}"></td>
-                <td th:text="${reservation.getRoom_id()}"></td>
-                <td th:text="${#dates.format(reservation.getStartdate(), 'dd-MM-yyyy')}"></td>
-                <td th:text="${#dates.format(reservation.getEnddate(), 'dd-MM-yyyy')}"></td>
-                <td><a th:href="@{'/delete-reservation/' + ${reservation.getReservation_id()}}"><button type="submit" th:name="action" th:value="${reservation.getReservation_id()}" class="btn btn-danger">Anuluj</button></a></td>
-                    <!--
-                    <td><button type="submit" th:name="action" th:value="${reservation.getReservation_id()}" class="btn btn-danger" >Anuluj</button></td>-->
-                <!--<a th:href="@{/>(reservation_id=${reservation.getReservation_id()})}">-->
+            <tr th:each="room: ${freeRooms}">
+                <td th:text="${room.getRoom_id()}"></td>
+                <td th:text="${room.getType()}"></td>
+                <td th:text="${room.getSize()}"></td>
+                <td th:text="${room.getRate()}"></td>
+                <td th:if="${room.occupied == 'Wolny'}"><span style="color: green; font-weight: bold;" th:text="${room.getOccupied()}"></span></td>
+                <td th:if="${room.occupied == 'Zajete'}"><span style="color: red; font-weight: bold;" th:text="${room.getOccupied()}"></span></td>
             </tr>
         </table>
     </div>

@@ -58,25 +58,25 @@
             <div class="col-4"></div>
             <div class="col-4 h5 d-flex justify-content-center jumbotron rounded-2" style="background-color: rgba(255, 255, 255, 0.8);
             color: #212529; font-size:x-large;"> Lista obecnych pokojów w hotelu
-
-
             </div>
-
         </div>
         <div class="row">
-
-            <div class="col-5"></div><a href="/add-room" class="col-2" ><button type="submit" class="btn  mx-auto btn-warning align-center " style="margin-left: auto;margin-right: auto;">Dodaj nowy pokój</button></a><div class="col-5"></div>
-
+            <div class="col-3"></div>
+            <a href="/add-room" class="col-2" ><button type="submit" class="btn mx-auto btn-warning align-center " style="margin-left: auto;margin-right: auto;">Dodaj nowy pokój</button></a>
+            <a href="/occupied-rooms" class="col-2" ><button type="submit" class="btn mx-auto btn-danger align-center " style="margin-left: auto;margin-right: auto;">Wyświetl zajete pokoje</button></a>
+            <a href="/free-rooms" class="col-2" ><button type="submit" class="btn mx-auto btn-success align-center " style="margin-left: auto;margin-right: auto;">Wyświetl wolne pokoje</button></a>
+            <div class="col-3"></div>
         </div>
         <div class="col-12 my-3">
         </div>
-        <table class="table border-1" style="background-color: rgba(255, 255, 255, 0.8)">
+        <table class="table border-1 scrollable" style="background-color: rgba(255, 255, 255, 0.8)">
             <thead>
-            <tr >
+            <tr>
                 <th scope="col">Numer pokoju</th>
                 <th scope="col">Typ pokoju</th>
                 <th scope="col">Wielkość pokoju</th>
                 <th scope="col">Stawka za pokój</th>
+                <th scope="col">Czy posiada aktualnie rezerwacje?</th>
             </tr>
             </thead>
 
@@ -85,7 +85,8 @@
                 <td th:text="${room.getType()}"></td>
                 <td th:text="${room.getSize()}"></td>
                 <td th:text="${room.getRate()}"></td>
-
+                <td th:if="${room.occupied == 'Wolny'}"><span style="color: green; font-weight: bold;" th:text="${room.getOccupied()}"></span></td>
+                <td th:if="${room.occupied == 'Zajete'}"><span style="color: red; font-weight: bold;" th:text="${room.getOccupied()}"></span></td>
             </tr>
         </table>
     </div>

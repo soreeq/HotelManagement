@@ -9,6 +9,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,17 +29,18 @@ public class Reservation implements Serializable {
 
     private String guest_id;
 
+    @Min(102)
     private int room_id;
 
-
+    @Past(message = "Data rezerwacji jest nieprawidłowa")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startdate;
 
-
+    @Future(message = "cos jest nie tak")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date enddate;
 
-    public Reservation(String guest_id, int room_id,  Date startdate,  Date enddate) {
+    public Reservation(String guest_id, int room_id, Date startdate, Date enddate) {
         this.guest_id = guest_id;
         this.room_id = room_id;
         this.startdate = startdate;

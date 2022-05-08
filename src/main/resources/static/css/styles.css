@@ -5,7 +5,7 @@
 
 .bg-image {
     background-image: url(background.jpg);
-    background-position: center;
+    background-position: absolute;
     background-size: cover;
     padding-left: 0;
     padding-right: 0;  
@@ -67,4 +67,32 @@ label {
 body {
     overflow: hidden; /* Hide scrollbars */
     background: cover;
-  }
+}
+.alert {
+    padding: 0 0 0 0;
+}
+.scrollable {
+    height: 333px;
+}
+table {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+thead {
+    flex: 0 0 auto;
+}
+
+tbody {
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}

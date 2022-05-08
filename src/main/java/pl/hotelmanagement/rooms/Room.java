@@ -23,14 +23,13 @@ public class Room {
     @NonNull
     private int size;
 
-    private boolean occupied;
+    private String occupied;
 
     private int rate;
 
-    public Room(int room_id, String type, int size, boolean occupied, int rate)  {
+    public Room(int room_id, String type, int size, int rate)  {
         this.type = type;
         this.size = size;
-        this.occupied = occupied;
         this.rate = rate;
         this.room_id = room_id;
     }

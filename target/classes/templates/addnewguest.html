@@ -95,6 +95,14 @@
                     </div>
                 </div>
                 <div class="form-row">
+                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div></span>
+<!--                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div></span>
+                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div></span>
+                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></div></span>
+                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div></span>
+                    <span style="color: red; text-align:center; margin-left:auto; margin-right:auto;"><div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div></span>-->
+                </div>
+                <div class="form-row">
                         <button type="submit" class="btn col-4 mx-auto btn-warning align-self-center" style="height: 50%";>Zarejestruj klienta</button>
                 </div>
                 
